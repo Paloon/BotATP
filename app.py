@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord import app_commands
 import os
 import datetime
+import math
 from config import Allow_user,Room,Id,Room2,TOKEN
 from server import keep_alive
 
@@ -96,7 +97,7 @@ async def atp_tax(interaction: discord.Interaction):
     if os.path.exists(filename):
         with open(filename, "r") as file:
             atp = float(file.read())
-            tax = atp * 0.05
+            tax = math.ceil(atp * 0.05)
             result = atp - tax
         with open(filename, "w") as file:
             file.write(str(result))
